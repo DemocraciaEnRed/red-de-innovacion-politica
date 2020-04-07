@@ -8,14 +8,10 @@ Esta herramienta fue pensada por Democracia en Red, una organización argentina 
 
 **Dirección:** Ciudad Autónoma de Buenos Aires
 
-**Código postal:** 
-
-**Teléfono:** 
-
 **Correo electrónico:** [it@democracyos.org](mailto:it@democracyos.org)
 ​
 ## Tecnología
 
-La Plataforma de Consultas Digitales es un desarrollo basado en la tecnología de DemocracyOS.
+La presente plataforma es un desarrollo basado en la tecnología de DemocraciaOS,  coordinada por Democracia en Red.
 
-**DemocracyOS** es una plataforma online de [código abierto](https://github.com/DemocracyOS) especialmente diseñada para informar, debatir y votar propuestas públicas hacia la construcción de una democracia adaptada al siglo XXI.
+**DemocraciaOS** es una plataforma online de [código abierto](https://github.com/DemocraciaEnRed/red-innovacion) especialmente diseñada para informar, debatir y votar propuestas públicas hacia la construcción de una democracia adaptada al siglo XXI.
