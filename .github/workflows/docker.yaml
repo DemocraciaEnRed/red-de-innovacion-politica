@@ -11,11 +11,13 @@ jobs:
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
+      - name: Set tag value
+        run: echo '::set-env name=GIT_TAG::${GITHUB_REF#refs/*/}'
       - name: Build & Push docker image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
           image: democraciaenred/red-de-innovacion-politica
-          tag: ${GITHUB_REF#refs/*/}
+          tag: $GIT_TAG
           registry: ghcr.io
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
