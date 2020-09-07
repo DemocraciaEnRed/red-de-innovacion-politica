@@ -3,13 +3,13 @@ on:
   push:
     tags:
       - '*'
-  env:
-    git_tag: ${GITHUB_REF#refs/*/}
 
 jobs:
   work:
     name: Work
     runs-on: ubuntu-latest
+    env:
+      git_tag: ${GITHUB_REF#refs/*/}
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
