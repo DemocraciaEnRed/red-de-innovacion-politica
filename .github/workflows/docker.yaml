@@ -16,6 +16,6 @@ jobs:
         with:
           image: democraciaenred/red-de-innovacion-politica
           tag: ${GITHUB_REF#refs/*/}
-          registry: containers.pkg.github.com
+          registry: ghcr.io
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
