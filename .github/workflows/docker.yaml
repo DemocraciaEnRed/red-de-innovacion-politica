@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - '*'
+  env:
+    git_tag: ${GITHUB_REF#refs/*/}
 
 jobs:
   work:
@@ -11,13 +13,11 @@ jobs:
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
-      - name: Set tag value
-        run: echo '::set-env name=GIT_TAG::${GITHUB_REF#refs/*/}'
       - name: Build & Push docker image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
           image: democraciaenred/red-de-innovacion-politica
-          tag: $GIT_TAG
+          tag: ${{ env.git_tag }}
           registry: ghcr.io
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
