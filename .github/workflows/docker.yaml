@@ -8,16 +8,14 @@ jobs:
   work:
     name: Work
     runs-on: ubuntu-latest
-    env:
-      git_tag: ${GITHUB_REF#refs/*/}
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
       - name: Build & Push docker image
-        uses: mr-smithers-excellent/docker-build-push@v4
+        uses: docker/build-push-action@v1
         with:
-          image: democraciaenred/red-de-innovacion-politica
-          tag: ${{ env.git_tag }}
-          registry: ghcr.io
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
+          tag_with_ref: true
+          registry: ghcr.io
+          repository: democraciaenred/red-de-innovacion-politica
