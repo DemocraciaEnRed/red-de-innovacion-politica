@@ -19,3 +19,8 @@ jobs:
           tag_with_ref: true
           registry: ghcr.io
           repository: democraciaenred/red-de-innovacion-politica
+      - name: Notify Slack
+        uses: craftech-io/slack-action@v1
+        with:
+          slack_webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
