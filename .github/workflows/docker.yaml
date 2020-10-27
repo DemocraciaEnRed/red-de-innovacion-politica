@@ -1,3 +1,4 @@
+# version 1.0
 name: Build and push
 on:
   push:
@@ -11,14 +12,26 @@ jobs:
     steps:
       - name: Check out the code
         uses: actions/checkout@v2
-      - name: Build & Push docker image
-        uses: docker/build-push-action@v1
+      - name: Lowercase
+        id: lower
+        uses: ASzc/change-string-case-action@v1
         with:
+          string: ${{ github.repository }}
+      - name: Build & Push docker image
+        uses: mr-smithers-excellent/docker-build-push@v4
+        with:
+          image: ${{ steps.lower.outputs.lowercase }}
+          registry: ghcr.io
           username: ${{ secrets.REGISTRY_USER }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
-          tag_with_ref: true
-          registry: ghcr.io
-          repository: democraciaenred/red-de-innovacion-politica
+      - name: Trigger stack update
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: ${{ secrets.STACK_URL }}
+          method: 'POST'
+          customHeaders: '{"Accept":  "application/vnd.github.everest-preview+json"}'
+          bearerToken: ${{ secrets.REGISTRY_PASSWORD }}
+          data: '{"event_type": "update-stack"}'
       - name: Notify Slack
         uses: craftech-io/slack-action@v1
         with:
