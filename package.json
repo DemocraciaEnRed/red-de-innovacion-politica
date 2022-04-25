@@ -223,9 +223,7 @@
     "serve": "NODE_PATH=. gulp serve",
     "migrate": "NODE_PATH=. bin/dos-migrate",
     "heroku-postbuild": "NODE_PATH=. gulp build --minify",
-    "test": "NODE_PATH=. MONGO_URL=mongodb://localhost/DemocracyOS-test gulp test",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "test": "NODE_PATH=. MONGO_URL=mongodb://localhost/DemocracyOS-test gulp test"
   },
   "snyk": true,
   "browser": {
